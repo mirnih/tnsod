@@ -1,0 +1,1 @@
+﻿CREATE INDEX idx_users_name_surname ON Users (Name, Surname);
