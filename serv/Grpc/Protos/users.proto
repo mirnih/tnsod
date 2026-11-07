@@ -1,0 +1,64 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "ConsoleApp1.Protos";
+
+service UserServiceGrpc {
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+  rpc GetUserById (GetUserByIdRequest) returns (GetUserByIdResponse);
+  rpc GetUsersByName (GetUsersByNameRequest) returns (GetUsersByNameResponse);
+  rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
+}
+  message UserModel {
+    int32 id = 1;
+    string login = 2;
+    string name = 3;
+    string surname = 4;
+    int32 age = 5;
+  }
+  message CreateUserRequest {
+    string login = 1;
+    string password = 2;
+    string name = 3;
+    string surname = 4;
+    int32 age = 5;
+    }
+  message CreateUserResponse{
+  int32 id = 1;
+}
+  message DeleteUserRequest {
+    int32 id = 1;
+  }
+  
+  message DeleteUserResponse{
+    bool result = 1;
+  }
+  
+  message GetUserByIdRequest{
+    int32 id = 1;
+  }
+  
+  message GetUserByIdResponse{
+    optional UserModel user = 1;
+  }
+  
+  message GetUsersByNameRequest{
+    string name = 1; 
+    string surname = 2; 
+  }
+  
+  message GetUsersByNameResponse{
+    repeated UserModel users = 1;
+  }
+  
+  message UpdateUserRequest{
+    int32 id = 1;
+    string password = 2;
+    string name = 3;
+    string surname = 4;
+    int32 age = 5;
+  }
+  
+  message UpdateUserResponse{
+  bool result = 1 ; 
+  }
