@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "RateLimiter.Reader";
+package reader;
+
+service Reader {
+  rpc Ping (PingRequest) returns (PingResponse);
+  rpc GetAllLimits (GetAllLimitsRequest) returns (GetAllLimitsResponse);
+}
+
+message PingRequest {
+  string clientName = 1;
+}
+
+message PingResponse {
+  string status = 1;
+}
+
+message RateLimitModel {
+  string route = 1;
+  int32 requests_per_minute = 2;
+}
+
+message GetAllLimitsRequest {}
+
+message GetAllLimitsResponse {
+  repeated RateLimitModel limits = 1;
+}
